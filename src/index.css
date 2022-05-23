@@ -4,5 +4,54 @@
 
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: "Roboto", sans-serif;
+}
+
+#gallery {
+  display: flex;
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+#nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  width: 300px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  background-color: #eeea;
+}
+
+.nav-item--img {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.25rem;
+}
+
+.nav-item--active {
+  background-color: #1f56bb;
+}
+
+.nav-item--title {
+  font-size: 1.25rem;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#preview {
+  background-color: aquamarine;
+  height: 100rem;
+  width: 100%;
+  margin: 0 1rem;
+  border-radius: 0.25rem;
 }

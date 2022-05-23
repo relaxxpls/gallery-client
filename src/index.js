@@ -1,7 +1,19 @@
-function myFunction(imgs) {
-  var expandImg = document.getElementById("expandedImg");
-  var imgText = document.getElementById("imgtext");
-  expandImg.src = imgs.src;
-  imgText.innerHTML = imgs.alt;
-  expandImg.parentElement.style.display = "block";
-}
+const loadNavigation = async () => {
+  const response = await fetch("./data.json");
+  const data = await response.json();
+
+  const nav = document.getElementById("nav");
+
+  data.forEach((item) => {
+    const navItem = document.createElement("li");
+    navItem.className = "nav-item";
+    navItem.innerHTML = `
+      <img class="nav-item--img" src="${item.previewImage}"></img>
+      <span class="nav-item--title">${item.title}</span>
+    `;
+
+    nav.appendChild(navItem);
+  });
+};
+
+document.addEventListener("DOMContentLoaded", loadNavigation);
