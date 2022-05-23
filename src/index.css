@@ -4,7 +4,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 0 4rem;
 }
 
 header {
@@ -18,7 +18,7 @@ header {
 .gallery {
   display: flex;
   gap: 1rem;
-  margin: 2rem auto;
+  margin: 1rem auto;
   max-width: 800px;
   padding: 0.5rem;
   border-radius: 0.25rem;
@@ -41,16 +41,16 @@ header {
   cursor: pointer;
 }
 
-.nav-item--img {
-  width: 48px;
-  height: 48px;
-}
-
 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 0.25rem;
+}
+
+.nav-item--img {
+  width: 48px;
+  aspect-ratio: 1;
 }
 
 .active {
@@ -59,8 +59,10 @@ img {
 }
 
 .nav-item--title {
-  font-size: 1rem;
   margin-left: 0.5rem;
+  position: relative;
+  width: 100%;
+  font-size: 1rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -71,7 +73,8 @@ img {
   flex-direction: column;
   align-items: center;
   margin: 0;
-  height: 40rem;
+  width: 100%;
+  aspect-ratio: 3/4;
 }
 
 .preview--title {
@@ -83,7 +86,7 @@ img {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   height: fit-content;
   width: 100%;

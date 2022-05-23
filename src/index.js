@@ -33,8 +33,10 @@ const loadNavigation = async () => {
     const navItem = document.createElement("li");
     navItem.className = "nav-item";
     navItem.innerHTML = `
-    <img class="nav-item--img" src="${item.previewImage}"></img>
-    <span class="nav-item--title">${item.title}</span>
+      <img class="nav-item--img" src="${item.previewImage}"></img>
+      <div class="nav-item--title" data-filetype=${item.title.slice(-7)}>
+        <span>${item.title}</span>
+      </div>
     `;
 
     nav.appendChild(navItem);
