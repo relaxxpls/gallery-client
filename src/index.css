@@ -7,9 +7,12 @@ body {
   margin: 0;
 }
 
-.heading {
-  color: #1d1d27;
+header {
+  background-color: #1f56bb;
+  color: #ffffff;
+  padding: 0.25rem 0;
   text-align: center;
+  margin: 0;
 }
 
 .gallery {
@@ -64,10 +67,31 @@ img {
 }
 
 .preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0;
+  height: 40rem;
 }
 
 .preview--title {
-  font-size: 1.5rem;
-  margin: 0.5rem;
+  text-align: center;
+  width: 100%;
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+  border: none;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: fit-content;
+  width: 100%;
+  text-align: center;
+  background-color: #1f56bb;
+  color: #ffffff;
+}
+
+footer a {
+  color: #ffffff;
 }

@@ -1,30 +1,12 @@
-var activeNavItem = 0;
+const nav = document.getElementById("nav");
+const previewImage = document.getElementById("preview-img");
+const previewTitle = document.getElementById("preview-title");
+
+var activeNavItem = undefined;
 var navItems = [];
 var data = [];
 
-const loadNavigation = async () => {
-  const response = await fetch("./data.json");
-  data = await response.json();
-
-  const nav = document.getElementById("nav");
-
-  data.forEach((item) => {
-    const navItem = document.createElement("li");
-    navItem.className = "nav-item";
-    navItem.innerHTML = `
-      <img class="nav-item--img" src="${item.previewImage}"></img>
-      <span class="nav-item--title">${item.title}</span>
-    `;
-
-    nav.appendChild(navItem);
-  });
-
-  navItems = document.querySelectorAll(".nav-item");
-};
-
-document.addEventListener("DOMContentLoaded", loadNavigation);
-
-const makeActive = (index) => () => {
+const makeActive = (index) => {
   const itemLen = navItems.length;
   if (index < 0) {
     index += itemLen;
@@ -32,20 +14,53 @@ const makeActive = (index) => () => {
     index -= itemLen;
   }
 
-  navItems[activeNavItem].classList.remove("active");
+  if (activeNavItem !== undefined) {
+    navItems[activeNavItem].classList.remove("active");
+  }
+
   activeNavItem = index;
   navItems[activeNavItem].classList.add("active");
+
+  previewImage.src = data[activeNavItem].previewImage;
+  previewTitle.value = data[activeNavItem].title;
 };
 
-navItems.forEach((item, index) => {
-  item.addEventListener("click", (event) => makeActive(index));
-});
+const loadNavigation = async () => {
+  const response = await fetch("./data.json");
+  data = await response.json();
+
+  data.forEach((item) => {
+    const navItem = document.createElement("li");
+    navItem.className = "nav-item";
+    navItem.innerHTML = `
+    <img class="nav-item--img" src="${item.previewImage}"></img>
+    <span class="nav-item--title">${item.title}</span>
+    `;
+
+    nav.appendChild(navItem);
+  });
+
+  navItems = document.querySelectorAll(".nav-item");
+  navItems.forEach((item, index) => {
+    item.addEventListener("click", () => makeActive(index));
+  });
+
+  makeActive(0);
+};
+
+document.addEventListener("DOMContentLoaded", loadNavigation);
 
 // ? if user presses up or down arrow, make it active
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowUp") {
-    makeActive(activeNavItem - 1)();
+    makeActive(activeNavItem - 1);
   } else if (event.key === "ArrowDown") {
-    makeActive(activeNavItem + 1)();
+    makeActive(activeNavItem + 1);
   }
+});
+
+previewTitle.addEventListener("input", (event) => {
+  data[activeNavItem].title = event.target.value;
+  navItems[activeNavItem].querySelector(".nav-item--title").innerHTML =
+    event.target.value;
 });
