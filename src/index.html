@@ -6,14 +6,26 @@
   </head>
 
   <body>
-    <div style="text-align: center">
+    <div class="heading">
       <h2>My Image Gallery</h2>
       <p>Built by Laxman Desai (relaxxpls)</p>
     </div>
 
-    <main id="gallery">
-      <ul id="nav"></ul>
-      <figure id="preview"></figure>
+    <main class="gallery">
+      <ul id="nav" class="nav"></ul>
+
+      <figure class="preview">
+        <img
+          id="preview-img"
+          src="https://images.unsplash.com/photo-1649859396073-13ff3244ec1d?ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000"
+        />
+        <input
+          id="preview-title"
+          class="preview--title"
+          type="text"
+          value="Caption"
+        />
+      </figure>
     </main>
 
     <script src="./index.js"></script>
