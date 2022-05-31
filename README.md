@@ -1,2 +1,4 @@
-# gallery-frontend
-Frontend for a Gallery app. A part of my internship at Sprinklr.
+# Image Gallery
+
+Frontend for a simple image Gallery.
+Built using Typescript & NextJS.
